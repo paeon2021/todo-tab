@@ -109,6 +109,7 @@ input {
 
 form.yourname {
   border: 1px solid #159e4a;
+  border-image: linear-gradient(45deg, rgb(0,143,104), rgb(250,224,66)) 1;
   padding: 1px;
 }
 
