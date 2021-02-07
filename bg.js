@@ -1,6 +1,6 @@
 const body = document.querySelector("body");
 
-const IMG_NUMBER = 3;
+const IMG_NUMBER = 4;
 
 const IMG_SHOWING = "showing";
 const IMG_NOT_SHOWING = "form";
@@ -22,7 +22,7 @@ function paintImage(imgNumber) {
 }
 
 function genRandom() {
-  const number = Math.floor(Math.random() * 3);
+  const number = Math.floor(Math.random() * 4);
   return number;
 }
 
