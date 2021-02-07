@@ -44,6 +44,29 @@ const GREETING_ARRAY = [
 ];
 const GREETING_NUMBER = GREETING_ARRAY.length;
 
+const EMOJI_ARRAY = [
+  "🍉",
+  "💦",
+  "🔥",
+  "✨",
+  "🌻",
+  "🌝",
+  "🌹",
+  "🐵",
+  "🐳",
+  "🌲",
+  "🌿",
+  "🌺",
+  "🍑",
+  "🦊",
+  "🐝",
+  "🐧",
+  "🦋",
+  "🍋",
+  "🌳",
+];
+const EMOJI_NUMBER = EMOJI_ARRAY.length;
+
 function saveName(text) {
   localStorage.setItem(USER_LS, text);
 }
@@ -66,7 +89,8 @@ function paintGreeting(text) {
   greeting.classList.add(SHOWING_ON);
   const randomHelloNumber = Math.floor(Math.random() * HELLO_NUMBER);
   const randomNumber = Math.floor(Math.random() * GREETING_NUMBER);
-  greeting.innerText = `${HELLO_ARRAY[randomHelloNumber]}. ${text}, ${GREETING_ARRAY[randomNumber]}`;
+  const randomEmojiNumber = Math.floor(Math.random() * EMOJI_NUMBER);
+  greeting.innerText = `${HELLO_ARRAY[randomHelloNumber]}. ${text}, ${GREETING_ARRAY[randomNumber]} ${EMOJI_ARRAY[randomEmojiNumber]}`;
   document.title = `안녕. ${text}, ${GREETING_ARRAY[randomNumber]}`;
 }
 
