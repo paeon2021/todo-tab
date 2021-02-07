@@ -5,6 +5,7 @@ const todoForm = document.querySelector(".todoForm"),
 const TODOS_LS = "toDos";
 
 let toDos = [];
+let todoidNumbers = 1;
 
 function deleteToDo(event) {
   const btn = event.target;
@@ -25,14 +26,15 @@ function paintToDo(text) {
   const li = document.createElement("li");
   const span = document.createElement("span");
   const delBtn = document.createElement("button");
-  const todoId = toDos.length + 1;
+  const todoId = todoidNumbers;
+  todoidNumbers += 1;
   delBtn.addEventListener("click", deleteToDo);
   delBtn.innerText = " X ";
   span.innerText = text;
   li.appendChild(span);
   li.appendChild(delBtn);
   delBtn.className = "delete";
-  li.id = todoId;
+  li.id = "todo" + todoId;
   todoList.appendChild(li);
   const toDoObj = {
     text: text,
