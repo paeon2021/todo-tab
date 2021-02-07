@@ -75,7 +75,7 @@ img.bgImage {
 }
 
 .sub {
-  margin: 3rem 0;
+  margin: 2rem 0;
   padding: 1px 1px 1px 1px;
   border: 1px solid rgba(255, 255, 255, 0.589);
 }
@@ -109,7 +109,8 @@ input {
 
 form.yourname {
   border: 1px solid #159e4a;
-  border-image: linear-gradient(45deg, rgb(0,143,104), rgb(250,224,66)) 1;
+  border-image: linear-gradient(45deg, rgb(0, 143, 104), rgb(250, 224, 66)) 1;
+
   padding: 1px;
 }
 
@@ -189,7 +190,7 @@ button.deleteDaily:hover {
   margin: 0;
 }
 
-.js-greetings {
+.js-form {
 }
 
 .form {
@@ -295,7 +296,7 @@ ul.todo li a:hover {
   color: #333;
   text-align: center;
   min-width: 220px;
-  margin-bottom: 3rem;
+  margin: 2rem auto;
 }
 
 .date {
