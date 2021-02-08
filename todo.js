@@ -34,7 +34,7 @@ function paintToDo(text) {
   li.appendChild(span);
   li.appendChild(delBtn);
   delBtn.className = "delete";
-  li.id = "todo" + todoId;
+  li.id = todoId;
   todoList.appendChild(li);
   const toDoObj = {
     text: text,
