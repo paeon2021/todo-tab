@@ -7,42 +7,33 @@ const DONE_LS = "saveDone";
 
 let dailyToDos = [];
 let idNumbers = 1;
-let saveDone = [];
-
-function removeItemOnce(arr, value) {
-  var index = arr.indexOf(value);
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  return arr;
-}
 
 function display(clicked) {
   const checkId = clicked.target.parentNode;
   const checkIdInt = checkId.id;
-  // saveDone.includes(checkIdInt)); //true
-  typeof checkIdInt;
-  console.log(checkIdInt, saveDone.toString(checkIdInt));
-  if (saveDone.includes(checkIdInt) == false) {
-    checkId.classList = "on";
-    saveDone.push(checkIdInt);
-    /* const cleanDones = saveDone.filter(function (dailyToDo) {
-      return saveDone.id !== parseInt(checkIdInt);
-    });
-    saveDone = cleanDones;*/
-    saveCheckedDone();
-  } else {
+  const checkIdInLi = checkIdInt - 1;
+  console.log(dailyToDos[checkIdInLi], checkId);
+  if (dailyToDos[checkIdInLi].done === "noOff") {
     checkId.classList = "off";
-    removeItemOnce(saveDone, checkIdInt);
-    saveCheckedDone();
-  }
-  console.log(saveDone);
-  console.log(checkIdInt);
-}
+    dailyToDos[checkIdInLi].done = "yesOn";
+    const cleanDailyToDos = dailyToDos.filter(function (dailyToDo) {
+      return dailyToDo.id !== parseInt(checkIdInLi.id);
+    });
+    dailyToDos = cleanDailyToDos;
+    console.log(dailyToDos, "dailyToDos clicked if off made to on");
+    saveDailyToDos();
+  } else {
+    checkId.classList = "on";
+    dailyToDos[checkIdInLi].done = "noOff";
+    const cleanDailyToDos = dailyToDos.filter(function (dailyToDo) {
+      return dailyToDo.id !== parseInt(checkIdInLi.id);
+    });
 
-function saveCheckedDone() {
-  localStorage.setItem(DONE_LS, JSON.stringify(saveDone));
-  console.log(saveDone);
+    dailyToDos = cleanDailyToDos;
+    console.log(dailyToDos, "dailyToDos clicked else made to off");
+    saveDailyToDos();
+  }
+  console.log(checkIdInt);
 }
 
 function deleteDailyToDos(event) {
@@ -61,7 +52,7 @@ function saveDailyToDos() {
   localStorage.setItem(DAILY_LS, JSON.stringify(dailyToDos));
 }
 
-function paintDailyToDos(text) {
+function paintDailyToDos(text, done) {
   const dailyToDoLi = document.createElement("li");
   const aHref = document.createElement("a");
   aHref.setAttribute("href", "javascript:void(0);");
@@ -80,13 +71,16 @@ function paintDailyToDos(text) {
   dailyToDoLi.appendChild(dailyDeleteBtn);
   dailyToDoLi.id = newId;
   //const newIdForClass = newId - 1;
-  console.log(newId);
+  console.log(newId, "newId");
   /* dailyToDoLi.classList.add("off");
    */
-  if (saveDone.includes(newId - 1) == false) {
-    dailyToDoLi.classList.add("off");
-  } else {
+
+  if (done === "noOff") {
     dailyToDoLi.classList.add("on");
+    //done = "yesOn";
+  } else {
+    dailyToDoLi.classList.add("off");
+    //done = "noOff";
   }
 
   dailyList.appendChild(dailyToDoLi);
@@ -95,6 +89,7 @@ function paintDailyToDos(text) {
   const dailyToDoObj = {
     text: text,
     id: newId,
+    done: done,
   };
   dailyToDos.push(dailyToDoObj);
   saveDailyToDos();
@@ -113,7 +108,7 @@ function loadDailyToDos() {
   if (loadedDailyToDos !== null) {
     const parsedDailyToDos = JSON.parse(loadedDailyToDos);
     parsedDailyToDos.forEach(function (dailyToDo) {
-      paintDailyToDos(dailyToDo.text);
+      paintDailyToDos(dailyToDo.text, dailyToDo.done);
     });
   }
 }
@@ -121,7 +116,7 @@ function loadDailyToDos() {
 function init() {
   loadDailyToDos();
   dailyForm.addEventListener("submit", handleDailySubmit);
-  console.log(saveDone);
+  console.log(dailyToDos);
 }
 
 init();
