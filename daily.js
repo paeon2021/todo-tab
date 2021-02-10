@@ -13,9 +13,9 @@ function display(clicked) {
   const checkIdInt = checkId.id;
   const checkIdInLi = checkIdInt - 1;
   console.log(dailyToDos[checkIdInLi], checkId);
-  if (dailyToDos[checkIdInLi].done === "noOff") {
+  if (dailyToDos[checkIdInLi].done === "yesDone") {
     checkId.classList = "off";
-    dailyToDos[checkIdInLi].done = "yesOn";
+    dailyToDos[checkIdInLi].done = "notDone";
     const cleanDailyToDos = dailyToDos.filter(function (dailyToDo) {
       return dailyToDo.id !== parseInt(checkIdInLi.id);
     });
@@ -24,7 +24,7 @@ function display(clicked) {
     saveDailyToDos();
   } else {
     checkId.classList = "on";
-    dailyToDos[checkIdInLi].done = "noOff";
+    dailyToDos[checkIdInLi].done = "yesDone";
     const cleanDailyToDos = dailyToDos.filter(function (dailyToDo) {
       return dailyToDo.id !== parseInt(checkIdInLi.id);
     });
@@ -75,12 +75,12 @@ function paintDailyToDos(text, done) {
   /* dailyToDoLi.classList.add("off");
    */
 
-  if (done === "noOff") {
+  if (done === "yesDone") {
     dailyToDoLi.classList.add("on");
-    //done = "yesOn";
+    //done = "notDone";
   } else {
     dailyToDoLi.classList.add("off");
-    //done = "noOff";
+    //done = "yesDone";
   }
 
   dailyList.appendChild(dailyToDoLi);
