@@ -35,6 +35,29 @@ function display(clicked) {
   console.log(checkIdInt);
 }
 
+function resetDailyToDos(event) {
+  const resetBtn = event.target;
+  const selectDone = resetBtn.parentNode.querySelectorAll(".on");
+  console.log(selectDone);
+  for (i = 0; i < selectDone.length; i++) {
+    const checkId = selectDone[i].id;
+    const checkIdInLi = checkId - 1;
+    console.log(selectDone[i]);
+    selectDone[i].className = "off";
+    dailyToDos[checkIdInLi].done = "notDone";
+    const cleanDailyToDos = dailyToDos.filter(function (dailyToDo) {
+      return dailyToDo.id !== parseInt(checkIdInLi.id);
+    });
+    dailyToDos = cleanDailyToDos;
+    console.log(dailyToDos, "dailyToDos clicked if off made to on");
+    saveDailyToDos();
+  }
+  /*위와 동일!
+  const selectThis = document.getElementsByClassName("check")[0].querySelectorAll(".on");
+  console.log(selectThis);
+  */
+}
+
 function deleteDailyToDos(event) {
   const dlyBtn = event.target;
   const dailyLi = dlyBtn.parentNode;
@@ -42,7 +65,6 @@ function deleteDailyToDos(event) {
   const cleanDailyToDos = dailyToDos.filter(function (dailyToDo) {
     return dailyToDo.id !== parseInt(dailyLi.id);
   });
-
   dailyToDos = cleanDailyToDos;
   saveDailyToDos();
 }
@@ -70,10 +92,17 @@ function paintDailyToDos(text, done) {
   dailyToDoLi.appendChild(dailyDeleteBtn);
   dailyToDoLi.id = newId;
   //const newIdForClass = newId - 1;
+  resetBtnExists = document.getElementById("daily-reset");
+  if (resetBtnExists == null && dailyToDos.length > 0) {
+    const resetBtn = document.createElement("button");
+    resetBtn.id = "daily-reset";
+    resetBtn.innerText = "🌞";
+    resetBtn.addEventListener("click", resetDailyToDos);
+    dailyList.appendChild(resetBtn);
+  }
   console.log(newId, "newId");
   /* dailyToDoLi.classList.add("off");
    */
-
   if (done === "yesDone") {
     dailyToDoLi.classList.add("on");
     //done = "notDone";
