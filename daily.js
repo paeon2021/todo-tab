@@ -3,7 +3,6 @@ const dailyForm = document.querySelector(".dailyForm"),
   dailyList = document.querySelector(".check");
 
 const DAILY_LS = "dailyToDos";
-const DONE_LS = "saveDone";
 
 let dailyToDos = [];
 let idNumbers = 1;
@@ -56,7 +55,7 @@ function paintDailyToDos(text, done) {
   const dailyToDoLi = document.createElement("li");
   const aHref = document.createElement("a");
   aHref.setAttribute("href", "javascript:void(0);");
-  aHref.classList.add("icon");
+  dailyToDoLi.classList.add("daily-to-do-link");
   const dailyDeleteBtn = document.createElement("button");
   dailyDeleteBtn.className = "deleteDaily";
   /*const newId = dailyToDos.length + 1;*/
@@ -104,7 +103,6 @@ function handleDailySubmit(event) {
 
 function loadDailyToDos() {
   const loadedDailyToDos = localStorage.getItem(DAILY_LS);
-  const loadedDone = localStorage.getItem(DONE_LS);
   if (loadedDailyToDos !== null) {
     const parsedDailyToDos = JSON.parse(loadedDailyToDos);
     parsedDailyToDos.forEach(function (dailyToDo) {
