@@ -49,109 +49,6 @@ img.bgImage {
   }
 }
 
-/* 드랍다운 */
-
-#dropdown {
-  z-index: 1;
-  position: relative;
-  display: inline-block;
-  width: 8rem;
-  padding: 0.5rem;
-  height: 100%;
-  background-color: #d4d3d32c;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  border-left: 6px solid #f3ef1d7c;
-}
-
-.category {
-  background-color: rgba(255, 255, 255, 0.712);
-  margin: 1px 1px -1px 1px;
-  padding: 2px;
-  color: #ccc;
-}
-
-#dropbtn {
-  color: #fff;
-  margin: 1rem 0 0 1rem;
-  width: 100%;
-  text-align: center;
-  border-radius: 2rem;
-}
-
-#dropdown:hover {
-  background-color: transparent;
-  border-left: 6px solid #87e04c96;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-p#dropbtn {
-  background-color: #e2e2e250;
-  padding: 0.4rem;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-#dropdown-content {
-  display: flex;
-  background-color: #e4e4e4e7;
-  min-width: 490px;
-  margin: 0 auto;
-  padding: 2.2rem 1.6rem;
-  z-index: 2;
-  border-top-right-radius: 2rem;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.767);
-}
-
-#dropdown > #dropdown-content {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.25s linear;
-}
-#dropdown:hover > #dropdown-content {
-  visibility: visible;
-  opacity: 1;
-}
-
-#dropdown:hover #dropdown-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: baseline;
-}
-
-/* 즐겨찾기 */
-
-#fav,
-#coding,
-#memi,
-#work {
-  margin: 0 0.3rem;
-  text-align: center;
-  border: 1px solid #fff;
-}
-
-#fav a,
-#coding a,
-#memi a,
-#work a {
-  display: block;
-  margin: 1px;
-  color: #4f4f4f;
-  padding: 0.3em 0.6em;
-  background-color: rgba(255, 255, 255, 0.829);
-}
-#fav a:hover,
-#coding a:hover,
-#memi a:hover,
-#work a:hover {
-  background-color: #d8d8d8;
-  color: #fff;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
-}
-
 /* 본문 */
 
 #page-wrap {
@@ -250,21 +147,21 @@ button.lets:hover {
   border: 1px solid #ccc;
 }
 
-button.delete {
+button#daily-reset {
   display: inline-block;
-  margin: auto;
-  font-size: 1.1rem;
-  font-weight: normal;
-  padding: 0 0.2rem;
+  float: right;
+  margin: 5px 1px 0 0;
+  font-size: 1rem;
+  padding: 0.2rem 0.4rem;
   color: rgb(218, 218, 218);
-  background-color: #fff;
-  border: 1px solid #fff;
-  border-radius: 0.2rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 1rem;
 }
 
-button.delete:hover {
-  color: #f83a00;
-  border: 1px solid #fff;
+button#daily-reset:hover {
+  border: none;
+  background-color: #fff;
 }
 
 button.deleteDaily,
