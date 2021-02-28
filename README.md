@@ -9,8 +9,8 @@ todo tab for you and me
 *get weather with geo coordinate and openweathermap api
 
 #right side bar : input data saved at local storage
-*daily routine : deletable, srikethrough-markable, marking-resetable
-*quick to-do-list : deletable, srikethrough-markable
+*daily routine : deletable, strikethrough-markable, marking-resetable
+*quick to-do-list : deletable, strikethrough-markable
 
 #random background images displayed once loaded
 
